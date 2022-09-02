@@ -1,13 +1,13 @@
 @extends('admin.layouts.main')
 
 @section('title')
-    Категории
+    Теги
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('admin.category.create') }}" class="btn btn-primary float-left"><i class="fas fa-plus"></i>
+            <a href="{{ route('admin.tag.create') }}" class="btn btn-primary float-left"><i class="fas fa-plus"></i>
                 Добавить</a>
         </div>
         <!-- /.card-header -->
@@ -21,18 +21,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($tags as $tag)
                         <tr>
-                            <td>{{ $category->id }}.</td>
-                            <td>{{ $category->title }}</td>
-                            <td class="text-center"><a href="{{ route('admin.category.show', $category->id) }}"
+                            <td>{{ $tag->id }}.</td>
+                            <td>{{ $tag->title }}</td>
+                            <td class="text-center"><a href="{{ route('admin.tag.show', $tag->id) }}"
                                     class="btn btn-info float-left mr-3"><i class="fas fa-eye"></i></a>
                             </td>
                         </tr>
                     @endforeach
-                    @if (!$categories->count())
+                    @if (!$tags->count())
                     <tr>
-                        <td colspan="3">Категорий нет. Поскорее создай их!</td>
+                        <td colspan="3" style="text-center">Тегов нет. Поскорее создай их!</td>
                     </tr>
                     @endif
                 </tbody>
@@ -40,7 +40,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer clearfix">
-            <div class="pagination-sm m-0 float-right">{{ $categories->links() }}</div>
+            <div class="pagination-sm m-0 float-right">{{ $tags->links() }}</div>
         </div>
     </div>
 @endsection
