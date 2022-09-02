@@ -1,5 +1,10 @@
 @extends('admin.layouts.main')
 
+@section('title')
+Приборная доска
+@endsection
+
+
 @section('content')
     <div class="row">
         <div class="col-lg-6">
