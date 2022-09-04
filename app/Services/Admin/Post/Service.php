@@ -5,33 +5,50 @@ namespace App\Services\Admin\Post;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class Service extends Controller
 {
     public function store($data)
     {
+        $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+        $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
         try {
             DB::beginTransaction();
-            $tags = $data['tags'];
-            unset($data['tags']);
+            if (isset($data['tags'])) {
+                $tags = $data['tags'];
+                unset($data['tags']);
+            }
             $post = Post::create($data);
-            $post->tags()->attach($tags);
+            if (isset($tags)) {
+                $post->tags()->attach($tags);
+            }
             DB::commit();
         } catch (\Exception $exception) {
             DB::rollBack();
         }
     }
 
-    public function update($data, $post){
-        try{
+    public function update($data, $post)
+    {
+        try {
             DB::beginTransaction();
-            $tags = $data['tags'];
-            unset($data['tags']);
+            if (isset($data['preview_image'])) {
+                $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+            }
+            if (isset($data['main_image'])) {
+                $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
+            }
+            if (isset($data['tags'])) {
+                $tags = $data['tags'];
+                unset($data['tags']);
+                $post->tags()->sync($tags);
+            }
             $post->update($data);
-            $post->tags()->sync($tags);
             DB::commit();
-        }catch(\Exception $exception){
+        } catch (\Exception $exception) {
             DB::rollBack();
+            dd($exception);
         }
     }
 }

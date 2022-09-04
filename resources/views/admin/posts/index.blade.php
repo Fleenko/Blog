@@ -17,7 +17,7 @@
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>Название</th>
-                        <th style="width: 40px">Действие</th>
+                        <th style="width: 140px">Действие</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,15 +25,18 @@
                         <tr>
                             <td>{{ $post->id }}.</td>
                             <td>{{ $post->title }}</td>
-                            <td class="text-center"><a href="{{ route('admin.post.show', $post->id) }}"
-                                    class="btn btn-info float-left mr-3"><i class="fas fa-eye"></i></a>
+                            <td class="text-center">
+                                <a href="{{ route('admin.post.show', $post->id) }}" class="btn btn-info float-left mr-3"><i
+                                        class="fas fa-eye"></i></a>
+                                <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-success float-left mr-2"><i
+                                        class="fas fa-edit"></i></a>
                             </td>
                         </tr>
                     @endforeach
                     @if (!$posts->count())
-                    <tr>
-                        <td colspan="3">Постов нет. Поскорее создай их!</td>
-                    </tr>
+                        <tr>
+                            <td colspan="3">Постов нет. Поскорее создай их!</td>
+                        </tr>
                     @endif
                 </tbody>
             </table>
