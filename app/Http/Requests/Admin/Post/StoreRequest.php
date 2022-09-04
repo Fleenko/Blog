@@ -33,4 +33,18 @@ class StoreRequest extends FormRequest
             'main_image' => 'required|file',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Это поле необходимо заполнить',
+            'content.required' => 'Пост не может быть без контента',
+            'tags.required' => 'Теги необходимо выбрать',
+            'tags.exists' => 'Тег не найден в базе',
+            'category_id.required' => 'Категорию необходимо выбрать',
+            'category_id.exists' => 'Категория не найдена в базе',
+            'preview_image.required' => 'Файл необходимо выбрать',
+            'main_image.required' => 'Файл необходимо выбрать',
+        ];
+    }
 }

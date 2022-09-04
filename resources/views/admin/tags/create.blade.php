@@ -6,14 +6,14 @@
 
 @section('content')
     <div class="card card-primary">
-        <form action="{{ route('admin.tag.store') }}" method="post" >
+        <form action="{{ route('admin.tag.store') }}" method="post">
             @csrf
             <div class="card-body">
                 <div class="form-group">
                     <label for="title">Название тега</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Название">
                     @error('title')
-                        <div class="text-danger">Это поле необходимо заполнить</div>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>

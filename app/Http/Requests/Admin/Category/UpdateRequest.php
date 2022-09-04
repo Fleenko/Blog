@@ -24,7 +24,14 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string', 
+            'title' => 'required|string',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Это поле необходимо заполнить',
         ];
     }
 }

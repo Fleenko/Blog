@@ -7,7 +7,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class Service extends Controller
+class PostService extends Controller
 {
     public function store($data)
     {
@@ -26,6 +26,7 @@ class Service extends Controller
             DB::commit();
         } catch (\Exception $exception) {
             DB::rollBack();
+            abort(500);
         }
     }
 
@@ -48,7 +49,9 @@ class Service extends Controller
             DB::commit();
         } catch (\Exception $exception) {
             DB::rollBack();
-            dd($exception);
+            abort(500);
         }
+
+        return $post;
     }
 }

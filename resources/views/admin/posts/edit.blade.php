@@ -15,14 +15,14 @@
                     <input type="text" class="form-control" id="title" name="title" placeholder="Название"
                         value="{{ $post->title }}">
                     @error('title')
-                        <div class="text-danger">Это поле необходимо заполнить</div>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>Содержание</label>
                     <textarea id="summernote" name="content">{{ $post->content }}</textarea>
                     @error('content')
-                        <div class="text-danger">Это поле необходимо заполнить</div>
+                        <div class="text-danger">{{ $message }}ь</div>
                     @enderror
                 </div>
                 <div class="form-group">
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     @error('preview_image')
-                        <div class="text-danger">Файл необходимо выбрать</div>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     @error('main_image')
-                        <div class="text-danger">Файл необходимо выбрать</div>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group w-25">
@@ -78,6 +78,9 @@
                                 {{ $category->title }}</option>
                         @endforeach
                     </select>
+                    @error('category_id')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label>Теги</label>
@@ -90,7 +93,7 @@
                         @endforeach
                     </select>
                     @error('tags')
-                        <div class="text-danger">Теги необходимо выбрать</div>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
 

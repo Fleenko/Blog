@@ -15,7 +15,7 @@
                     <input type="text" class="form-control" id="title" name="title" placeholder="Название"
                         value="{{ $tag->title }}">
                     @error('title')
-                        <div class="text-danger">Это поле необходимо заполнить</div>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
