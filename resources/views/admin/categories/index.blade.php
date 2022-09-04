@@ -17,7 +17,7 @@
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>Название</th>
-                        <th style="width: 40px">Действие</th>
+                        <th style="width: 140px">Действие</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,15 +25,18 @@
                         <tr>
                             <td>{{ $category->id }}.</td>
                             <td>{{ $category->title }}</td>
-                            <td class="text-center"><a href="{{ route('admin.category.show', $category->id) }}"
+                            <td class="text-center">
+                                <a href="{{ route('admin.category.show', $category->id) }}"
                                     class="btn btn-info float-left mr-3"><i class="fas fa-eye"></i></a>
+                                <a href="{{ route('admin.category.edit', $category->id) }}"
+                                    class="btn btn-success float-left mr-2"><i class="fas fa-edit"></i></a>
                             </td>
                         </tr>
                     @endforeach
                     @if (!$categories->count())
-                    <tr>
-                        <td colspan="3">Категорий нет. Поскорее создай их!</td>
-                    </tr>
+                        <tr>
+                            <td colspan="3">Категорий нет. Поскорее создай их!</td>
+                        </tr>
                     @endif
                 </tbody>
             </table>

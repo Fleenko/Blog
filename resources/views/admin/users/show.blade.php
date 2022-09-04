@@ -1,15 +1,15 @@
 @extends('admin.layouts.main')
 
 @section('title')
-    Категория "{{ $category->title }}"
+    Пользователь "{{ $user->name }}"
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-success float-left mr-2"><i
+            <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-success float-left mr-2"><i
                     class="fas fa-edit"></i></a>
-            <form action="{{ route('admin.category.destroy', $category->id) }}" method="post">
+            <form action="{{ route('admin.user.destroy', $user->id) }}" method="post">
                 @csrf
                 @method('delete')
                 <button class="btn btn-danger float-left" type="submit"><i class="fas fa-trash"></i></button>
@@ -21,23 +21,27 @@
                 <thead>
                     <tr>
                         <th style="width: 10px">Id</th>
-                        <th>Название</th>
+                        <th>Имя пользователя</th>
+                        <th>E-mail</th>
+                        <th>Роль</th>
                         <th>Создано</th>
                         <th>Обновлено</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->title }}</td>
-                        <td>{{ $category->created_at }}</td>
-                        <td>{{ $category->updated_at }}</td>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $roles[$user->role] }}</td>
+                        <td>{{ $user->created_at }}</td>
+                        <td>{{ $user->updated_at }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="card-footer clearfix">
-            <a href="{{ route('admin.category.index') }}" class="btn btn-danger float-left">Назад</a>
+            <a href="{{ route('admin.user.index') }}" class="btn btn-danger float-left">Назад</a>
         </div>
     </div>
 @endsection

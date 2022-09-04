@@ -15,6 +15,6 @@ class UpdateController extends Controller
             $tag->update($data); 
         }
         
-        return redirect()->route('admin.tag.show', compact('tag'));
+        return redirect()->route('admin.tag.index');
     }
 }

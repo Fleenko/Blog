@@ -15,6 +15,6 @@ class UpdateController extends Controller
             $category->update($data); 
         }
         
-        return redirect()->route('admin.category.show', compact('category'));
+        return redirect()->route('admin.category.index');
     }
 }

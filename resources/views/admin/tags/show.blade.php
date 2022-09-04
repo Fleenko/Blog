@@ -7,7 +7,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('admin.tag.edit', $tag->id) }}" class="btn btn-info float-left mr-2"><i
+            <a href="{{ route('admin.tag.edit', $tag->id) }}" class="btn btn-success float-left mr-2"><i
                     class="fas fa-edit"></i></a>
             <form action="{{ route('admin.tag.destroy', $tag->id) }}" method="post">
                 @csrf

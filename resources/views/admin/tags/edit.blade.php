@@ -22,7 +22,7 @@
 
             <div class="card-footer">
                 <input type="submit" class="btn btn-success" value="Обновить">
-                <a href="{{ route('admin.tag.show', $tag->id) }}" class="btn btn-danger">Назад</a>
+                <a href="{{ route('admin.tag.index') }}" class="btn btn-danger">Назад</a>
             </div>
         </form>
     </div>
