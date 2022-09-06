@@ -28,7 +28,7 @@
                             <td>{{ $user->id }}.</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $roles[$user->role] }}</td>
+                            <td>{{ $roles[$user->role??1] }}</td>
                             <td class="text-center">
                                 <a href="{{ route('admin.user.show', $user->id) }}" class="btn btn-info float-left mr-3"><i
                                         class="fas fa-eye"></i></a>

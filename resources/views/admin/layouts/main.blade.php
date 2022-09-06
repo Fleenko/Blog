@@ -37,6 +37,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a href="#" class="nav-link">Contact</a>
                 </li>
             </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                    <input class="btn btn-outline-primary" type="submit" value="Выйти"></form>
+                </li>
+            </ul>
         </nav>
         <!-- /.navbar -->
 

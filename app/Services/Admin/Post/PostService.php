@@ -2,12 +2,11 @@
 
 namespace App\Services\Admin\Post;
 
-use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class PostService extends Controller
+class PostService
 {
     public function store($data)
     {

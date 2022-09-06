@@ -29,7 +29,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                         </div>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="E-mail" value="{{ old('email') }}">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="E-mail"
+                            value="{{ old('email') }}">
                     </div>
                     @error('email')
                         <div class="text-danger">{{ $message }}</div>
@@ -55,9 +56,20 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         </div>
-                        <input type="text" class="form-control" id="password" name="password" placeholder="Пароль" value="{{ old('password') }}">
+                        <input type="text" class="form-control" id="password" name="password" placeholder="Пароль"
+                            value="{{ old('password') }}">
                     </div>
                     @error('password')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                        <input type="checkbox" class="custom-control-input" id="generate_new_password"
+                            name="generate_new_password" {{ old('generate_new_password') ? 'checked' : '' }}>
+                        <label class="custom-control-label" for="generate_new_password">Сгенирировать случайный пароль</label>
+                    </div>
+                    @error('generate_new_password')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>

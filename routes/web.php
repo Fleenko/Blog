@@ -9,7 +9,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
     Route::get('/', 'IndexController')->name('index');
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin ', 'middleware' => ['auth', 'admin', 'verified']], function () {
     Route::group(['namespace' => 'Main'], function () {
         Route::get('/', 'IndexController')->name('admin.main.index');
     });
@@ -43,7 +43,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
         Route::patch('/{post}', 'UpdateController')->name('admin.post.update');
         Route::delete('/{post}', 'DestroyController')->name('admin.post.destroy');
     });
- 
+
     Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
         Route::get('/', 'IndexController')->name('admin.user.index');
         Route::get('/create', 'CreateController')->name('admin.user.create');
@@ -55,4 +55,4 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
     });
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
